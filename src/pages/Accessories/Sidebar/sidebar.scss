@@ -1,18 +1,46 @@
 .sidebar {
   width: calc(30% - 9px);
   max-width: 270px;
-  min-height: 50vh;
   border-radius: 0 0 2px 2px;
   padding: 25px 30px;
   box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+  &__title{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 152%;
+    margin-bottom: 15px;
+  }
+  &__change {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 15px;
+    &-number {
+      width: calc(50% - 15px);
+      height: 30px;
+      border: 1px solid #DADCDC;
+      border-radius: 5px;
+      outline: none;
+    }
+    &-range{
+      width: 80%;
+    }
+  }
   &__block{
     display: flex;
     flex-direction: column;
     row-gap: 30px;
+    &-list {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+    }
     &-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-bottom: 15px;
     }
     &-item2{
       display: flex;
@@ -44,3 +72,4 @@
     }
   }
 }
+
