@@ -1,10 +1,7 @@
 import React from 'react';
-import {AiFillGoogleCircle} from 'react-icons/ai'
-import {FiMail} from 'react-icons/fi'
-import {FaGithub} from 'react-icons/fa'
 import {Link} from "react-router-dom";
 
-const Auth = () => {
+const Confirm = () => {
     return (
         <div className='auth'>
             <div className='auth__left'>
@@ -72,31 +69,18 @@ const Auth = () => {
                 </ul>
             </div>
             <div className='auth__right'>
-                <h2 className='auth__register'>Вход и регистрация</h2>
-                <p className='auth__phone'>Введите ваш номер телефона и мы вышлем
-                    вам код  подтверждения для регистрации</p>
-                <input className='auth__input' placeholder='+ 7 (123)-456-78-90' type="tel"/>
-                <Link to='/confirm'>
-                    <button className='auth__cont'>Продолжить</button>
-                </Link>
-                <Link to='/register'>
-                    <button className='auth__login'>Регистрация</button>
-                </Link>
-                <Link to='/login'>
-                    <button className='auth__login'>Войти</button>
+                <h2 className='auth__register'>+ 7 (123)-456-78-90</h2>
+                <p className='auth__phone'>Мы отправили вам смс с кодом подтверждения</p>
+                <input className='auth__input' type="text" placeholder='Введите код из SMS'/>
+                <button className='auth__cont'>Продолжить</button>
+                <p className='auth__again'>Отправить код еще раз</p>
+                <Link to='/auth'>
+                    <p className='auth__back'>Назад</p>
                 </Link>
 
-                <p className='auth__text'>или продолжить через соцсети</p>
-                <div className='auth__icons'>
-                    <p className='auth__icon'><AiFillGoogleCircle/></p>
-                    <p className='auth__icon'><FiMail/></p>
-                    <p className='auth__icon'><FaGithub/></p>
-                </div>
-
-                <Link to='/' className='home'>Вернуться на главную страницу</Link>
             </div>
         </div>
     );
 };
 
-export default Auth;
+export default Confirm;

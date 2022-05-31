@@ -1,12 +1,26 @@
-import React from 'react';
-import {AiFillGoogleCircle} from 'react-icons/ai'
-import {FiMail} from 'react-icons/fi'
-import {FaGithub} from 'react-icons/fa'
-import {Link} from "react-router-dom";
+import React, {useContext} from 'react';
+import {Link, NavLink} from "react-router-dom"
+import {useForm} from "react-hook-form";
 
-const Auth = () => {
+
+
+const Login = () => {
+
+
+
+    const {
+        register,
+        handleSubmit,
+        setError: {
+            errors
+        },
+        reset
+    } = useForm();
+
+
+
     return (
-        <div className='auth'>
+        <section className='login'>
             <div className='auth__left'>
                 <h2 className='auth__title'><svg width="150" height="63" viewBox="0 0 150 63" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.5 18.2429H15.1677V51.7099H21.4728C35.6206 51.7099 42.6918 44.836 42.6863 31.088C42.6863 17.621 36.1212 10.8899 22.991 10.8949H20.3423V0L22.2361 0C33.53 0 42.3046 2.71016 48.56 8.13049C54.8153 13.5508 57.9402 21.0974 57.9347 30.7702C57.9347 41.0688 54.6964 48.953 48.2198 54.4226C41.7432 59.8922 32.3685 62.6442 20.0957 62.6787H0.5V18.2429Z" fill="white"/>
@@ -71,32 +85,19 @@ const Auth = () => {
 </span> Помогайте нуждающимся </li>
                 </ul>
             </div>
-            <div className='auth__right'>
-                <h2 className='auth__register'>Вход и регистрация</h2>
-                <p className='auth__phone'>Введите ваш номер телефона и мы вышлем
-                    вам код  подтверждения для регистрации</p>
-                <input className='auth__input' placeholder='+ 7 (123)-456-78-90' type="tel"/>
-                <Link to='/confirm'>
-                    <button className='auth__cont'>Продолжить</button>
-                </Link>
-                <Link to='/register'>
-                    <button className='auth__login'>Регистрация</button>
-                </Link>
-                <Link to='/login'>
-                    <button className='auth__login'>Войти</button>
-                </Link>
-
-                <p className='auth__text'>или продолжить через соцсети</p>
-                <div className='auth__icons'>
-                    <p className='auth__icon'><AiFillGoogleCircle/></p>
-                    <p className='auth__icon'><FiMail/></p>
-                    <p className='auth__icon'><FaGithub/></p>
-                </div>
-
+            <form className='login__form'>
+                <h2 className='login__title'>Вход в аккаунт</h2>
+                <p className='login__text'>Войдите в свою учетную запись, используя адрес электронной почты и пароль, указанные при регистрации.</p>
+                <label className='login__label' htmlFor="1">Email</label>
+                <input id='1' {...register('email')} className='login__input' type="email" placeholder='Your working email'/>
+                <label className='login__label' htmlFor="2">Password</label>
+                <input id='2' {...register('password')} className='login__input' type="password" placeholder='Enter password'/>
+                <button className='login__btn' type='submit'>Войти</button>
+                <p className='login__quest'>нет аккаунат? <Link className='login__link' to='/register'>Регистрация</Link> </p>
                 <Link to='/' className='home'>Вернуться на главную страницу</Link>
-            </div>
-        </div>
+            </form>
+        </section>
     );
 };
 
-export default Auth;
+export default Login;

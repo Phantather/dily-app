@@ -1,12 +1,35 @@
-import React from 'react';
+import React, {useContext, useRef} from 'react';
+import InputMask from 'react-input-mask';
+import {Link, useNavigate} from "react-router-dom";
+import {useForm} from "react-hook-form";
 import {AiFillGoogleCircle} from 'react-icons/ai'
 import {FiMail} from 'react-icons/fi'
 import {FaGithub} from 'react-icons/fa'
-import {Link} from "react-router-dom";
 
-const Auth = () => {
+const Register = () => {
+
+
+
+    const {
+        register,
+        handleSubmit,
+        formState: {
+            errors
+        },
+        watch,
+        reset
+    } = useForm({
+            mode: 'onBlur'
+        }
+    );
+    const password = useRef({});
+    password.current = watch("password", "");
+
+
+
+
     return (
-        <div className='auth'>
+        <section className='register'>
             <div className='auth__left'>
                 <h2 className='auth__title'><svg width="150" height="63" viewBox="0 0 150 63" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.5 18.2429H15.1677V51.7099H21.4728C35.6206 51.7099 42.6918 44.836 42.6863 31.088C42.6863 17.621 36.1212 10.8899 22.991 10.8949H20.3423V0L22.2361 0C33.53 0 42.3046 2.71016 48.56 8.13049C54.8153 13.5508 57.9402 21.0974 57.9347 30.7702C57.9347 41.0688 54.6964 48.953 48.2198 54.4226C41.7432 59.8922 32.3685 62.6442 20.0957 62.6787H0.5V18.2429Z" fill="white"/>
@@ -71,32 +94,53 @@ const Auth = () => {
 </span> Помогайте нуждающимся </li>
                 </ul>
             </div>
-            <div className='auth__right'>
-                <h2 className='auth__register'>Вход и регистрация</h2>
-                <p className='auth__phone'>Введите ваш номер телефона и мы вышлем
-                    вам код  подтверждения для регистрации</p>
-                <input className='auth__input' placeholder='+ 7 (123)-456-78-90' type="tel"/>
-                <Link to='/confirm'>
-                    <button className='auth__cont'>Продолжить</button>
-                </Link>
-                <Link to='/register'>
-                    <button className='auth__login'>Регистрация</button>
-                </Link>
-                <Link to='/login'>
-                    <button className='auth__login'>Войти</button>
-                </Link>
+            <form className='register__form' >
+                <h2 className='register__title'>Регистрация</h2>
+                <p className='register__text'>Регистрация занимает меньше минуты, но дает вам полный контроль над заказом вещей</p>
+                <label className='register__label' htmlFor="1">Email</label>
+                <input id='1' {...register('email', {
+                    required : 'Это поле обязательное *',
+                })} className='register__input' type="email" placeholder='Введите email'/>
+                <span>{errors?.email?.message}</span>
+                <label className='register__label' htmlFor="2">Login</label>
+                <input id='2' {...register('login', {
+                    required: 'Это поле обязательное *'
+                })} className='register__input' type="text" placeholder='Введите логин'/>
+                <span>{errors?.login?.message}</span>
+                <label className='register__label' htmlFor="tel">Phone</label>
+                <InputMask mask={`+\\9\\96(999)99-99-99`} type='tel'  id='tel' {...register('phone', {
+                    required: 'Это поле обязательное *'
+                })} className="register__input" placeholder='Ввеите номер телефона'/>
+                <span>{errors?.phone?.message}</span>
+                <label className='register__label' htmlFor="4">Password</label>
+                <input id='4' {...register('password', {
+                    required: "You must specify Procfile.js password",
+                    minLength: {
+                        value: 5,
+                        message: "Password must have at least 5 characters"
+                    }
+                })} className="register__input" type='password' placeholder='Введите пароль'/>
+                <span>{errors?.password?.message}</span>
+                <label className='register__label' htmlFor="5">Confirm Password</label>
+                <input id='5' className="register__input"  type='password' placeholder='Введите пароль повторно' {...register('confirmPwd', {
+                    validate: value =>
+                        value === password.current || "The password do not match"
+                })}/>
+                {errors?.confirmPwd && <p>{errors?.confirmPwd?.message}</p>}
 
-                <p className='auth__text'>или продолжить через соцсети</p>
                 <div className='auth__icons'>
                     <p className='auth__icon'><AiFillGoogleCircle/></p>
                     <p className='auth__icon'><FiMail/></p>
                     <p className='auth__icon'><FaGithub/></p>
                 </div>
 
+                <button className='register__btn'>Зарегестрироваться</button>
+                <p className='register__quest'>уже есть аккаунт? <Link className='register__link' to='/login'>Войти</Link> </p>
                 <Link to='/' className='home'>Вернуться на главную страницу</Link>
-            </div>
-        </div>
+
+            </form>
+        </section>
     );
 };
 
-export default Auth;
+export default Register;

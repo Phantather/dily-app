@@ -3,7 +3,7 @@ import {getData, createProduct} from "./firebaseFunction";
 import {useForm} from "react-hook-form";
 
 
-const Add = () => {
+const Home = () => {
 
     const [shoes, setShoes] = useState([]);
     const [progress ,setProgress] = useState(0);
@@ -15,14 +15,13 @@ const Add = () => {
     } = useForm();
 
     useEffect(() => {
-        console.log('sadasdasd');
         getData(setShoes)
-    }, [])
+    }, []);
 
     const addProduct =  (data) => {
         createProduct(data.image[0], setProgress, {...data, size: [45,46,47]}, setShoes);
         reset()
-    }
+    };
 
 
     return (
@@ -55,4 +54,4 @@ const Add = () => {
     );
 };
 
-export default Add;
+export default Home;
