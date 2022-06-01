@@ -37,7 +37,7 @@ const Accordion = ({title, dataInputs}) => {
                             {
                                 dataInputs.values.map(item => (
                                     <li className="sidebar__block-item2">
-                                        <input type={dataInputs.type}/>
+                                        <input type={dataInputs.type} name="check"/>
                                         <span>{item}</span>
                                     </li>
                                 ))

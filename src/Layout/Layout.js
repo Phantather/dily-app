@@ -15,17 +15,7 @@ const Layout = () => {
     return (
         <div>
             <Header/>
-
-            <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='/accessories' element={<Accessories/>}/>
-                <Route path='shops' element={<Shops/>}/>
-                <Route path='charity' element={<Charity/>}/>
-                <Route path='/auth' element={<Auth/>}/>
-                <Route path='/confirm' element={<Confirm/>}/>
-                <Route path='/register' element={<Register/>}/>
-                <Route path='/login' element={<Login/>}/>
-            </Routes>
+            
             <Outlet/>
 
             <Footer/>

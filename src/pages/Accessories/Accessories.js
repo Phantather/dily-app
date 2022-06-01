@@ -63,7 +63,7 @@ const Accessories = () => {
                         </div>
                     </div>
                     <div className="accessories__row">
-                        <div className={grid ? 'accessories__card' : 'card'}>
+                        <div className={!grid ? 'accessories__card' : 'card'}>
 
                                 <span className="selection__like">
                             <svg width="17" height="14" viewBox="0 0 17 14" fill="none"
