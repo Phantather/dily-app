@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import Item from "./Item";
-import Input from "./Input";
+
 
 const Accordion = ({title, dataInputs}) => {
 
@@ -44,7 +43,6 @@ const Accordion = ({title, dataInputs}) => {
                                 ))
                             }
                         </>
-
                 }
             </ul>
         </div>
