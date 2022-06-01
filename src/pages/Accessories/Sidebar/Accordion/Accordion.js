@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import Item from "./Item";
+import Input from "./Input";
 
-const Accordion = ({title}) => {
+const Accordion = ({title, dataInputs}) => {
 
     const [isActive, setIsActive] = useState(false);
 
@@ -34,10 +35,14 @@ const Accordion = ({title}) => {
                 {
                     isActive &&
                         <>
-                            <Item radio={"Все объявления"} />
-                            <Item radio={"Лучшая цена"} />
-                            <Item radio={"Аукцион"} />
-                            <Item radio={"Купить сейчас"} />
+                            {
+                                dataInputs.values.map(item => (
+                                    <li className="sidebar__block-item2">
+                                        <input type={dataInputs.type}/>
+                                        <span>{item}</span>
+                                    </li>
+                                ))
+                            }
                         </>
 
                 }
