@@ -1,0 +1,229 @@
+.buying{
+  position: relative;
+  &__{
+
+    &start{
+      padding: 50px 0 100px;
+      margin-top: 50px;
+      background: url("images/buingstartpage.png") right/cover no-repeat;
+
+      &-info{}
+      &-title{
+        max-width: 800px;
+        margin-bottom: 46px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 150%;
+        letter-spacing: 0.5px;
+        color: #00C65E;
+      }
+      &-text{
+        max-width: 493px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 150%;
+        letter-spacing: 0.5px;
+        color: #363A45;
+        margin-bottom: 100px;
+      }
+      &-btn{
+        padding: 12px 27px;
+        color: white;
+        background-color: #00C65E;
+        border: none;
+        border-radius: 10px;
+      }
+    }
+
+
+    &row{
+      padding: 120px 0 140px;
+      &-title{
+        margin-bottom: 7px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 150%;
+        letter-spacing: 0.5px;
+        color: #363A45;
+      }
+      &-wrapper{
+        display: flex;
+        column-gap: 10px;
+        justify-content: space-between;
+      }
+      &-card{
+        display: flex;
+        align-items: center;
+        column-gap: 20px;
+      }
+      &-num{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 120%;
+        letter-spacing: 0.5px;
+        color: #00C65E;
+      }
+      &-text{
+        max-width: 195px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0.5px;
+        color: #363A45;
+      }
+      &-img{
+        background: url("images/cardbg.png") center/cover no-repeat;
+      }
+    }
+
+
+    &advices{
+      margin-bottom: 160px;
+      &-wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 60px;
+      }
+      &-block{
+        width: calc(33.333% - 5px);
+        display: flex;
+        flex-direction: column;
+        row-gap: 60px;
+        &1{
+          margin-top: 80px;
+        }
+        &2{}
+        &3{
+          margin-top: 97px;
+        }
+      }
+      &-card{
+        width: 300px;
+        padding: 20px;
+        text-align: center;
+        z-index: 1;
+        &_img{
+          margin: 0 auto -25px;
+        }
+        &_text{
+          margin: 0 auto;
+          width: 242px;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 150%;
+          letter-spacing: 0.5px;
+          text-align: center;
+          color: #363A45;
+        &1{
+          width: 210px;
+        }
+        }
+        &_title{
+          text-align: left;
+          width: 360px;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 28px;
+          line-height: 150%;
+          letter-spacing: 0.5px;
+          color: #00C65E;
+          position: relative;
+          &:after{
+            position: absolute;
+            content: '';
+            height: 300px;
+            width: 100%;
+            background: url("images/adviseTitlebg.png") center/contain no-repeat;
+            top: -20px;
+            left: 80px;
+            z-index: -20;
+          }
+          & p{
+            width: 360px;
+            text-align-last: left;
+            font-weight: 800;
+            font-size: 36px;
+            line-height: 150%;
+            letter-spacing: 0.5px;
+          }
+          &-last{
+            margin-left: 80px;
+          }
+        }
+        &1{
+          background: url("images/advise1bg.png") top/cover no-repeat;
+        }
+        &2{
+          background: url("images/advice2bg.png") bottom/contain no-repeat;
+          margin-left: -30px;
+        }
+        &3{
+          background: url("images/advice2bg.png") bottom/contain no-repeat;
+          margin-left: 20px;
+        }
+        &4{
+          background: url("images/advice3bg.png") left/cover no-repeat;
+          margin-left: 15px;
+        }
+        &5{
+          background: url("images/advise1bg.png") top/cover no-repeat;
+          margin-left: -10px;
+        }
+        &6{
+          margin-left: -15px;
+        }
+
+      }
+    }
+
+
+
+
+    &overlay{
+      height: 100vh;
+      width: 100vw;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background: rgba(0,0,0,.2);
+      z-index: 10;
+    }
+    &popup{
+      padding: 30px 75px 90px;
+      background: #ffffff;
+      min-height: 300px;
+      min-width: 150px;
+      transform: translate(-50%, -50%);
+      box-shadow: 3px 4px 12px rgba(54, 58, 69, 0.26);
+      border-radius: 10px;
+      z-index: 25;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      &-close{
+        position: absolute;
+        right: -40px;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, .5);
+        cursor: pointer;
+      }
+    }
+
+
+
+  }
+}
+
+@import "./Sell/sell";

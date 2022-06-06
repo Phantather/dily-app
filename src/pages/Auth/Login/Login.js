@@ -1,13 +1,17 @@
 import React, {useContext} from 'react';
-import {Link, NavLink} from "react-router-dom"
+import {Link, NavLink, useNavigate} from "react-router-dom"
 import {useForm} from "react-hook-form";
-
+import { signInWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../../../firebase/firebase";
+import {registerUser} from "../../../redux/reducers/user";
+import {useDispatch} from "react-redux";
 
 
 const Login = () => {
 
 
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -17,7 +21,19 @@ const Login = () => {
         reset
     } = useForm();
 
-
+    const loginUser = (data) => {
+        signInWithEmailAndPassword(auth, data.email, data.password)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                dispatch(registerUser({obj: user}));
+                localStorage.setItem('user', JSON.stringify(user));
+                reset();
+                navigate('/')
+                // ...
+            })
+            .catch((error) => console.log(`bad request ${error}`));
+    };
 
     return (
         <section className='login'>
@@ -85,7 +101,7 @@ const Login = () => {
 </span> Помогайте нуждающимся </li>
                 </ul>
             </div>
-            <form className='login__form'>
+            <form className='login__form' onSubmit={handleSubmit(loginUser)}>
                 <h2 className='login__title'>Вход в аккаунт</h2>
                 <p className='login__text'>Войдите в свою учетную запись, используя адрес электронной почты и пароль, указанные при регистрации.</p>
                 <label className='login__label' htmlFor="1">Email</label>

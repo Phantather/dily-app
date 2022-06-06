@@ -3,11 +3,22 @@ import {createSlice} from "@reduxjs/toolkit";
 const userReducer = createSlice({
     name: 'user',
     initialState: {
-        email: '',
-        id: 1,
-        login: ''
+        user: {
+            email: '',
+            phoneNumber : ''
+        }
     },
-    reducers: {}
+    reducers: {
+        registerUser : (state, action) => {
+            state.user = action.payload.obj
+        },
+        logOutUser : (state) => {
+            state.user = {
+                email: '',
+                phoneNumber : ''
+            }
+        }
+    }
 });
 export default userReducer.reducer
-export const {} = userReducer.actions;
+export const {registerUser, logOutUser} = userReducer.actions;

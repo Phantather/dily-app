@@ -1,14 +1,20 @@
-import React, {useContext, useRef} from 'react';
+import React, { useRef} from 'react';
 import InputMask from 'react-input-mask';
 import {Link, useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
-import {AiFillGoogleCircle} from 'react-icons/ai'
 import {FiMail} from 'react-icons/fi'
 import {FaGithub} from 'react-icons/fa'
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../../../firebase/firebase";
+import {useDispatch} from "react-redux";
+import {registerUser} from "../../../redux/reducers/user";
+import Google from "../RegisterOrLoginFromSocials/Google/Google";
+
 
 const Register = () => {
 
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const {
         register,
@@ -27,6 +33,23 @@ const Register = () => {
 
 
 
+
+
+    const createUser = (data) => {
+        createUserWithEmailAndPassword(auth, data.email, data.password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                user.phoneNumber = data.phone;
+                user.displayName = data.login;
+
+                dispatch(registerUser({obj: user}));
+                localStorage.setItem('user', JSON.stringify(user));
+                reset();
+                navigate('/')
+            })
+            .catch((error) => console.log(`bad request ${error}`));
+
+    };
 
     return (
         <section className='register'>
@@ -94,7 +117,7 @@ const Register = () => {
 </span> Помогайте нуждающимся </li>
                 </ul>
             </div>
-            <form className='register__form' >
+            <form className='register__form' onSubmit={handleSubmit(createUser)}>
                 <h2 className='register__title'>Регистрация</h2>
                 <p className='register__text'>Регистрация занимает меньше минуты, но дает вам полный контроль над заказом вещей</p>
                 <label className='register__label' htmlFor="1">Email</label>
@@ -110,7 +133,7 @@ const Register = () => {
                 <label className='register__label' htmlFor="tel">Phone</label>
                 <InputMask mask={`+\\9\\96(999)99-99-99`} type='tel'  id='tel' {...register('phone', {
                     required: 'Это поле обязательное *'
-                })} className="register__input" placeholder='Ввеите номер телефона'/>
+                })} className="register__input" placeholder='Введите номер телефона'/>
                 <span>{errors?.phone?.message}</span>
                 <label className='register__label' htmlFor="4">Password</label>
                 <input id='4' {...register('password', {
@@ -129,8 +152,7 @@ const Register = () => {
                 {errors?.confirmPwd && <p>{errors?.confirmPwd?.message}</p>}
 
                 <div className='auth__icons'>
-                    <p className='auth__icon'><AiFillGoogleCircle/></p>
-                    <p className='auth__icon'><FiMail/></p>
+                    <Google/>
                     <p className='auth__icon'><FaGithub/></p>
                 </div>
 

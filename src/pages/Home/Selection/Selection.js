@@ -6,7 +6,8 @@ const Selection = () => {
         <section className="selection">
             <div className="container">
                 <div className="selection__nav">
-                    <h2 className="selection__title">
+                    <h2 className="select
+                    ion__title">
                         Подборка для вас
                     </h2>
 

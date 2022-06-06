@@ -1,0 +1,93 @@
+.sell{
+  &__{
+
+    &title{
+      text-align: center;
+      margin-bottom: 30px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 120%;
+      color: #363A45;
+    }
+    &form{
+      display: flex;
+      flex-direction: column;
+      row-gap: 18px;
+      &-row_double{
+        display: flex;
+        justify-content: space-between;
+      }
+      &-title{
+        margin-bottom: 5px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 150%;
+        color: #262626;
+      }
+      &-input{
+        width: 500px;
+        outline: none;
+        display: inline-block;
+        background: #ffffff;
+        border: 1px solid #DADCDC;
+        border-radius: 10px;
+        padding: 8px 15px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        color: #363A45;
+        &_half{
+          width: 235px;
+          //max-width: calc(50% - 15px);
+        }
+      }
+      &-block{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: center;
+        column-gap: 10px;
+      }
+      &-addPh{
+        height: 44px;
+        width: 44px;
+      }
+
+      &-bottom{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      &-check{
+        display: flex;
+        align-items: flex-start;
+        column-gap: 10px;
+      }
+      &-label{
+        display: inline-block;
+        width: 229px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        color: #262626;
+      }
+      &-btn{
+        background: #00C65E;
+        border-radius: 10px;
+        color: white;
+        border: none;
+        padding: 12px 56px;
+      }
+
+    }
+
+
+
+
+
+  }
+}
